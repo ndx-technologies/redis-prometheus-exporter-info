@@ -1,6 +1,6 @@
 Redis Prometheus Exporter `INFO`
 
-* 100 lines of code, no dependencies (except `redis/v9`)
+* 50 lines of code, no dependencies (except `redis/v9`)
 * exports `INFO` command numeric values
 
 ```bash
