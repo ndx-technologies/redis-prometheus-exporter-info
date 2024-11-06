@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -13,25 +12,14 @@ import (
 )
 
 func main() {
-	var config redis.Options
-	var addr string
-
-	flag.StringVar(&config.Network, "network", "tcp", "redis network")
-	flag.StringVar(&config.Addr, "addr", "0.0.0.0:6379", "redis host:port address")
-	flag.StringVar(&config.Username, "username", "", "redis username")
-	flag.StringVar(&config.Password, "password", "", "redis password")
-	flag.IntVar(&config.DB, "db", 0, "redis db")
-	flag.StringVar(&addr, "serve", ":8070", "exporter address")
-	flag.Parse()
-
-	if v := os.Getenv("REDIS_ADDR"); v != "" {
-		config.Addr = v
+	config := redis.Options{
+		Addr:     os.Getenv("REDIS_ADDR"),
+		Username: os.Getenv("REDIS_USERNAME"),
+		Password: os.Getenv("REDIS_PASSWORD"),
 	}
-	if v := os.Getenv("REDIS_USERNAME"); v != "" {
-		config.Username = v
-	}
-	if v := os.Getenv("REDIS_PASSWORD"); v != "" {
-		config.Password = v
+	addr := os.Getenv("SERVE")
+	if addr == "" {
+		addr = ":8070"
 	}
 
 	redisClient := redis.NewClient(&config)
