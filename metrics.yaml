@@ -36,22 +36,22 @@ cluster_cluster_enabled:
   type: gauge
 cpu_used_cpu_sys:
   help: System CPU consumed by the Redis server, which is the sum of system CPU consumed by all threads of the server process (main thread and background threads)
-  type: gauge
+  type: counter
 cpu_used_cpu_sys_children:
   help: System CPU consumed by the background processes
-  type: gauge
+  type: counter
 cpu_used_cpu_sys_main_thread:
   help: System CPU consumed by the Redis server main thread
-  type: gauge
+  type: counter
 cpu_used_cpu_user:
   help: User CPU consumed by the Redis server, which is the sum of user CPU consumed by all threads of the server process (main thread and background threads)
-  type: gauge
+  type: counter
 cpu_used_cpu_user_children:
   help: User CPU consumed by the background processes
-  type: gauge
+  type: counter
 cpu_used_cpu_user_main_thread:
   help: User CPU consumed by the Redis server main thread
-  type: gauge
+  type: counter
 memory_active_defrag_running:
   help: When activedefrag is enabled, this indicates whether defragmentation is currently active, and the CPU percentage it intends to utilize.
   type: gauge
