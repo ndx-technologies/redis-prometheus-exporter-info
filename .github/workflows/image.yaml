@@ -1,0 +1,28 @@
+name: image
+
+on: [push]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code
+        uses: actions/checkout@v4
+
+      - name: docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: image metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/ndx-technologies/redis-prometheus-exporter-info
+
+      - name: build and publish
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          push: true
