@@ -1,4 +1,4 @@
-redis_up:
+up:
   help: Shard is up and running
   type: gauge
 clients_blocked_clients:
