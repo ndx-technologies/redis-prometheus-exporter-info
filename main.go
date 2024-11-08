@@ -54,7 +54,7 @@ func main() {
 			fmt.Println(err.Error())
 		}
 		ts := time.Now()
-		info[""] = map[string]string{"up": "1"}
+		PrintMetric(w, "redis_up", metricConfig["up"], 1, ts)
 		for group, metrics := range info {
 			for metric, value := range metrics {
 				metric = strings.ToLower(group) + "_" + strings.ToLower(metric)
