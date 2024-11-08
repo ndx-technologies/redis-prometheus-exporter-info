@@ -1,0 +1,465 @@
+redis_up:
+  help: Shard is up and running
+  type: gauge
+clients_blocked_clients:
+  help: Number of clients pending on a blocking call (BLPOP, BRPOP, BRPOPLPUSH, BLMOVE, BZPOPMIN, BZPOPMAX)
+  type: gauge
+clients_client_recent_max_input_buffer:
+  help: Biggest input buffer among current client connections
+  type: gauge
+clients_client_recent_max_output_buffer:
+  help: Biggest output buffer among current client connections
+  type: gauge
+clients_clients_in_timeout_table:
+  help: Number of clients in the clients timeout table
+  type: gauge
+clients_cluster_connections:
+  help: An approximation of the number of sockets used by the cluster's bus
+  type: gauge
+clients_connected_clients:
+  help: Number of client connections to the specific shard
+  type: gauge
+clients_maxclients:
+  help: The value of the maxclients configuration directive. This is the upper limit for the sum of connected_clients, connected_slaves and cluster_connections.
+  type: gauge
+clients_total_blocking_keys:
+  help: Number of blocking keys
+  type: gauge
+clients_total_blocking_keys_on_nokey:
+  help: Number of blocking keys that one or more clients that would like to be unblocked when the key is deleted
+  type: gauge
+clients_tracking_clients:
+  help: Number of clients being tracked (CLIENT TRACKING)
+  type: gauge
+cluster_cluster_enabled:
+  help: Indicate Redis cluster is enabled
+  type: gauge
+cpu_used_cpu_sys:
+  help: System CPU consumed by the Redis server, which is the sum of system CPU consumed by all threads of the server process (main thread and background threads)
+  type: gauge
+cpu_used_cpu_sys_children:
+  help: System CPU consumed by the background processes
+  type: gauge
+cpu_used_cpu_sys_main_thread:
+  help: System CPU consumed by the Redis server main thread
+  type: gauge
+cpu_used_cpu_user:
+  help: User CPU consumed by the Redis server, which is the sum of user CPU consumed by all threads of the server process (main thread and background threads)
+  type: gauge
+cpu_used_cpu_user_children:
+  help: User CPU consumed by the background processes
+  type: gauge
+cpu_used_cpu_user_main_thread:
+  help: User CPU consumed by the Redis server main thread
+  type: gauge
+memory_active_defrag_running:
+  help: When activedefrag is enabled, this indicates whether defragmentation is currently active, and the CPU percentage it intends to utilize.
+  type: gauge
+memory_allocator_active:
+  help: Total bytes in the allocator active pages, this includes external-fragmentation.
+  type: gauge
+memory_allocator_allocated:
+  help: Total bytes allocated form the allocator, including internal-fragmentation. Normally the same as used_memory.
+  type: gauge
+memory_allocator_frag_bytes:
+  help: Delta between allocator_active and allocator_allocated. See note about mem_fragmentation_bytes.
+  type: gauge
+memory_allocator_frag_ratio:
+  help: Ratio between allocator_active and allocator_allocated. This is the true (external) fragmentation metric (not mem_fragmentation_ratio).
+  type: gauge
+memory_allocator_resident:
+  help: Total resident memory (RSS)
+  type: gauge
+memory_allocator_rss_bytes:
+  help: Delta between allocator_resident and allocator_active
+  type: gauge
+memory_allocator_rss_ratio:
+  help: Ratio between allocator_resident and allocator_active. This usually indicates pages that the allocator can and probably will soon release back to the OS.
+  type: gauge
+memory_lazyfree_pending_objects:
+  help: The number of objects waiting to be freed (as a result of calling UNLINK, or FLUSHDB and FLUSHALL with the ASYNC option)
+  type: gauge
+memory_lazyfreed_objects:
+  help: The number of objects that have been lazy freed.
+  type: counter
+memory_maxmemory:
+  help: The value of the maxmemory configuration directive
+  type: gauge
+memory_mem_aof_buffer:
+  help: Transient memory used for AOF and AOF rewrite buffers
+  type: gauge
+memory_mem_clients_normal:
+  help: Memory used by normal clients
+  type: gauge
+memory_mem_clients_slaves:
+  help: Memory used by replica clients - Starting Redis 7.0, replica buffers share memory with the replication backlog, so this field can show 0 when replicas don't trigger an increase of memory usage.
+  type: gauge
+memory_mem_cluster_links:
+  help: Memory used by links to peers on the cluster bus when cluster mode is enabled.
+  type: gauge
+memory_mem_fragmentation_bytes:
+  help: Delta between used_memory_rss and used_memory. Note that when the total fragmentation bytes is low (few megabytes), a high ratio (e.g. 1.5 and above) is not an indication of an issue.
+  type: gauge
+memory_mem_fragmentation_ratio:
+  help: Ratio between used_memory_rss and used_memory. Note that this doesn't only includes fragmentation, but also other process overheads (see the allocator_* metrics), and also overheads like code, shared libraries, stack, etc.
+  type: gauge
+memory_mem_not_counted_for_evict:
+  help: Used memory that's not counted for key eviction. This is basically transient replica and AOF buffers.
+  type: gauge
+memory_mem_replication_backlog:
+  help: Memory used by replication backlog
+  type: gauge
+memory_mem_total_replication_buffers:
+  help: Total memory consumed for replication buffers
+  type: gauge
+memory_number_of_cached_scripts:
+  help: The number of EVAL scripts cached by the server.
+  type: gauge
+memory_number_of_functions:
+  help: The number of functions
+  type: gauge
+memory_number_of_libraries:
+  help: The number of libraries
+  type: gauge
+memory_rss_overhead_bytes:
+  help: Delta between used_memory_rss (the process RSS) and allocator_resident
+  type: gauge
+memory_rss_overhead_ratio:
+  help: Ratio between used_memory_rss (the process RSS) and allocator_resident. This includes RSS overheads that are not allocator or heap related.
+  type: gauge
+memory_total_system_memory:
+  help: The total amount of memory that the Redis host has
+  type: gauge
+memory_used_memory:
+  help: Total number of bytes allocated by Redis using its allocator (either standard libc, jemalloc, or an alternative allocator such as tcmalloc)
+  type: gauge
+memory_used_memory_dataset:
+  help: The size in bytes of the dataset (used_memory_overhead subtracted from used_memory)
+  type: gauge
+memory_used_memory_functions:
+  help: Number of bytes overhead by Function scripts (part of used_memory)
+  type: gauge
+memory_used_memory_lua:
+  help: Number of bytes used by the Lua engine for EVAL scripts
+  type: gauge
+memory_used_memory_overhead:
+  help: The sum in bytes of all overheads that the server allocated for managing its internal data structures
+  type: gauge
+memory_used_memory_peak:
+  help: Peak memory consumed by Redis (in bytes)
+  type: gauge
+memory_used_memory_rss:
+  help: Number of bytes that Redis allocated as seen by the operating system (a.k.a resident set size). This is the number reported by tools such as top(1) and ps(1)
+  type: gauge
+memory_used_memory_scripts:
+  help: used_memory_scripts_eval + used_memory_functions (part of used_memory)
+  type: gauge
+memory_used_memory_scripts_eval:
+  help: Number of bytes overhead by the EVAL scripts (part of used_memory)
+  type: gauge
+memory_used_memory_startup:
+  help: Initial amount of memory consumed by Redis at startup in bytes
+  type: gauge
+memory_used_memory_vm_eval:
+  help: Number of bytes used by the script VM engines for EVAL framework (not part of used_memory)
+  type: gauge
+memory_used_memory_vm_functions:
+  help: Number of bytes used by the script VM engines for Functions framework (not part of used_memory)
+  type: gauge
+memory_used_memory_vm_total:
+  help: used_memory_vm_eval + used_memory_vm_functions (not part of used_memory)
+  type: gauge
+persistence_aof_current_rewrite_time_sec:
+  help: Duration of the on-going AOF rewrite operation if any
+  type: gauge
+persistence_aof_enabled:
+  help: Flag indicating AOF logging is activated
+  type: gauge
+persistence_aof_last_cow_size:
+  help: The size in bytes of copy-on-write memory during the last AOF rewrite operation
+  type: gauge
+persistence_aof_last_rewrite_time_sec:
+  help: Duration of the last AOF rewrite operation in seconds
+  type: gauge
+persistence_aof_rewrite_in_progress:
+  help: Flag indicating a AOF rewrite operation is on-going
+  type: gauge
+persistence_aof_rewrite_scheduled:
+  help: Flag indicating an AOF rewrite operation will be scheduled once the on-going RDB save is complete.
+  type: gauge
+persistence_aof_rewrites:
+  help: Number of AOF rewrites performed since startup
+  type: counter
+persistence_aof_rewrites_consecutive_failures:
+  help: Number of AOF rewrites that failed consecutively
+  type: counter
+persistence_async_loading:
+  help: Currently loading replication data-set asynchronously while serving old data. This means repl-diskless-load is enabled and set to swapdb.
+  type: gauge
+persistence_current_cow_peak:
+  help: The peak size in bytes of copy-on-write memory while a child fork is running
+  type: gauge
+persistence_current_cow_size:
+  help: The size in bytes of copy-on-write memory while a child fork is running
+  type: gauge
+persistence_current_cow_size_age:
+  help: The age, in seconds, of the current_cow_size value.
+  type: gauge
+persistence_current_fork_perc:
+  help: The percentage of progress of the current fork process. For AOF and RDB forks it is the percentage of current_save_keys_processed out of current_save_keys_total.
+  type: gauge
+persistence_current_save_keys_processed:
+  help: Number of keys processed by the current save operation
+  type: gauge
+persistence_current_save_keys_total:
+  help: Number of keys at the beginning of the current save operation
+  type: gauge
+persistence_loading:
+  help: Flag indicating if the load of a dump file is on-going
+  type: gauge
+persistence_module_fork_in_progress:
+  help: Flag indicating a module fork is on-going
+  type: gauge
+persistence_module_fork_last_cow_size:
+  help: The size in bytes of copy-on-write memory during the last module fork operation
+  type: gauge
+persistence_rdb_bgsave_in_progress:
+  help: Flag indicating a RDB save is on-going
+  type: gauge
+persistence_rdb_changes_since_last_save:
+  help: Number of changes since the last dump
+  type: gauge
+persistence_rdb_current_bgsave_time_sec:
+  help: Duration of the on-going RDB save operation if any
+  type: gauge
+persistence_rdb_last_bgsave_time_sec:
+  help: Duration of the last RDB save operation in seconds
+  type: gauge
+persistence_rdb_last_cow_size:
+  help: The size in bytes of copy-on-write memory during the last RDB save operation
+  type: gauge
+persistence_rdb_last_load_keys_expired:
+  help: Number of volatile keys deleted during the last RDB loading
+  type: gauge
+persistence_rdb_last_load_keys_loaded:
+  help: Number of keys loaded during the last RDB loading
+  type: gauge
+persistence_rdb_last_save_time:
+  help: Epoch-based timestamp of last successful RDB save
+  type: gauge
+persistence_rdb_saves:
+  help: Number of RDB snapshots performed since startup
+  type: counter
+replication_connected_slaves:
+  help: Number of connected replicas
+  type: gauge
+replication_master_repl_offset:
+  help: The server's current replication offset
+  type: gauge
+replication_repl_backlog_active:
+  help: Flag indicating replication backlog is active
+  type: gauge
+replication_repl_backlog_first_byte_offset:
+  help: The master offset of the replication backlog buffer
+  type: gauge
+replication_repl_backlog_histlen:
+  help: Size in bytes of the data in the replication backlog buffer
+  type: gauge
+replication_repl_backlog_size:
+  help: Total size in bytes of the replication backlog buffer
+  type: gauge
+replication_second_repl_offset:
+  help: The offset up to which replication IDs are accepted
+  type: gauge
+server_arch_bits:
+  help: Architecture (32 or 64 bits)
+  type: gauge
+server_configured_hz:
+  help: The server's configured frequency setting
+  type: gauge
+server_hz:
+  help: The server's current frequency setting
+  type: gauge
+server_io_threads_active:
+  help: Flag indicating if I/O threads are active
+  type: gauge
+server_uptime_in_seconds:
+  help: Number of seconds since Redis server start
+  type: counter
+stats_acl_access_denied_auth:
+  help: Number of authentication failures
+  type: counter
+stats_acl_access_denied_channel:
+  help: Number of commands rejected because of access denied to a channel
+  type: counter
+stats_acl_access_denied_cmd:
+  help: Number of commands rejected because of access denied to the command
+  type: counter
+stats_acl_access_denied_key:
+  help: Number of commands rejected because of access denied to a key
+  type: counter
+stats_active_defrag_hits:
+  help: Number of value reallocations performed by active the defragmentation process
+  type: counter
+stats_active_defrag_key_hits:
+  help: Number of keys that were actively defragmented
+  type: counter
+stats_active_defrag_key_misses:
+  help: Number of keys that were skipped by the active defragmentation process
+  type: counter
+stats_active_defrag_misses:
+  help: Number of aborted value reallocations started by the active defragmentation process
+  type: counter
+stats_current_active_defrag_time:
+  help: The time passed since memory fragmentation last was over the limit, in milliseconds
+  type: gauge
+stats_current_eviction_exceeded_time:
+  help: The time passed since used_memory last rose above maxmemory, in milliseconds
+  type: gauge
+stats_dump_payload_sanitizations:
+  help: Total number of dump payload deep integrity validations (see sanitize-dump-payload config).
+  type: counter
+stats_eventloop_cycles:
+  help: Total number of eventloop cycles
+  type: counter
+stats_eventloop_duration_cmd_sum:
+  help: Total time spent on executing commands in microseconds
+  type: counter
+stats_eventloop_duration_sum:
+  help: Total time spent in the eventloop in microseconds (including I/O and command processing)
+  type: counter
+stats_evicted_clients:
+  help: Number of evicted clients due to maxmemory-clients limit.
+  type: counter
+stats_evicted_keys:
+  help: Number of evicted keys due to maxmemory limit
+  type: counter
+stats_expire_cycle_cpu_milliseconds:
+  help: The cumulative amount of time spent on active expiry cycles
+  type: counter
+stats_expired_keys:
+  help: Total number of key expiration events
+  type: counter
+stats_expired_stale_perc:
+  help: The percentage of keys probably expired
+  type: gauge
+stats_expired_time_cap_reached_count:
+  help: The count of times that active expiry cycles have stopped early
+  type: counter
+stats_instantaneous_eventloop_cycles_per_sec:
+  help: Number of eventloop cycles per second
+  type: gauge
+stats_instantaneous_eventloop_duration_usec:
+  help: Average time spent in a single eventloop cycle in microseconds
+  type: gauge
+stats_instantaneous_input_kbps:
+  help: The network's read rate per second in KB/sec
+  type: gauge
+stats_instantaneous_input_repl_kbps:
+  help: The network's read rate per second in KB/sec for replication purposes
+  type: gauge
+stats_instantaneous_ops_per_sec:
+  help: Number of commands processed per second
+  type: gauge
+stats_instantaneous_output_kbps:
+  help: The network's write rate per second in KB/sec
+  type: gauge
+stats_instantaneous_output_repl_kbps:
+  help: The network's write rate per second in KB/sec for replication purposes
+  type: gauge
+stats_io_threaded_reads_processed:
+  help: Number of read events processed by the main and I/O threads
+  type: counter
+stats_io_threaded_writes_processed:
+  help: Number of write events processed by the main and I/O threads
+  type: counter
+stats_keyspace_hits:
+  help: Number of successful lookup of keys in the main dictionary
+  type: counter
+stats_keyspace_misses:
+  help: Number of un-successful lookup of keys in the main dictionary
+  type: counter
+stats_latest_fork_usec:
+  help: Duration of the latest fork operation in microseconds
+  type: gauge
+stats_migrate_cached_sockets:
+  help: The number of sockets open for MIGRATE purposes
+  type: gauge
+stats_pubsub_channels:
+  help: Global number of pub/sub channels with client subscriptions
+  type: gauge
+stats_pubsub_patterns:
+  help: Global number of pub/sub pattern with client subscriptions
+  type: gauge
+stats_pubsubshard_channels:
+  help: Global number of pub/sub shard channels with client subscriptions
+  type: gauge
+stats_rejected_connections:
+  help: Number of connections rejected because of maxclients limit
+  type: counter
+stats_reply_buffer_expands:
+  help: Total number of output buffer expands
+  type: counter
+stats_reply_buffer_shrinks:
+  help: Total number of output buffer shrinks
+  type: counter
+stats_slave_expires_tracked_keys:
+  help: The number of keys tracked for expiry purposes (applicable only to writable replicas)
+  type: gauge
+stats_sync_full:
+  help: The number of full resyncs with replicas
+  type: counter
+stats_sync_partial_err:
+  help: The number of denied partial resync requests
+  type: counter
+stats_sync_partial_ok:
+  help: The number of accepted partial resync requests
+  type: counter
+stats_total_active_defrag_time:
+  help: Total time memory fragmentation was over the limit, in milliseconds
+  type: counter
+stats_total_commands_processed:
+  help: Total number of commands processed by the server
+  type: counter
+stats_total_connections_received:
+  help: Total number of connections accepted by the server
+  type: counter
+stats_total_error_replies:
+  help: Total number of issued error replies, that is the sum of rejected commands (errors prior command execution) and failed commands (errors within the command execution)
+  type: counter
+stats_total_eviction_exceeded_time:
+  help: Total time used_memory was greater than maxmemory since server startup, in milliseconds
+  type: counter
+stats_total_forks:
+  help: Total number of fork operations since the server start
+  type: counter
+stats_total_net_input_bytes:
+  help: The total number of bytes read from the network
+  type: counter
+stats_total_net_output_bytes:
+  help: The total number of bytes written to the network
+  type: counter
+stats_total_net_repl_input_bytes:
+  help: The total number of bytes read from the network for replication purposes
+  type: counter
+stats_total_net_repl_output_bytes:
+  help: The total number of bytes written to the network for replication purposes
+  type: counter
+stats_total_reads_processed:
+  help: Total number of read events processed
+  type: counter
+stats_total_writes_processed:
+  help: Total number of write events processed
+  type: counter
+stats_tracking_total_items:
+  help: Number of items, that is the sum of clients number for each key, that are being tracked
+  type: gauge
+stats_tracking_total_keys:
+  help: Number of keys being tracked by the server
+  type: gauge
+stats_tracking_total_prefixes:
+  help: Number of tracked prefixes in server's prefix table (only applicable for broadcast mode)
+  type: gauge
+stats_unexpected_error_replies:
+  help: Number of unexpected error replies, that are types of errors from an AOF load or replication
+  type: counter
