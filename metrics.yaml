@@ -268,9 +268,6 @@ replication_repl_backlog_size:
 replication_second_repl_offset:
   help: The offset up to which replication IDs are accepted
   type: gauge
-server_arch_bits:
-  help: Architecture (32 or 64 bits)
-  type: gauge
 server_configured_hz:
   help: The server's configured frequency setting
   type: gauge
