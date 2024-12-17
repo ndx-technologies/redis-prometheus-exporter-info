@@ -1,9 +1,10 @@
-Redis Prometheus Exporter `INFO`
+Redis Prometheus Exporter[^1]
 
-* 50 lines of code, no dependencies (except `redis/v9` and `gopkg.in/yaml.v3`)
-* exports `INFO` command numeric values
+- [x] 100 LOC
+- [x] no dependencies (except `redis/v9` and `gopkg.in/yaml.v3`)
+- [x] `INFO`[^2]
+- [x] `FT.INFO`[^3] 
 
-## References
-
-* https://redis.io/docs/latest/commands/info/
-* https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md
+[^1]: https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md
+[^2]: https://redis.io/docs/latest/commands/info/
+[^3]: https://redis.io/docs/latest/commands/ft.info/

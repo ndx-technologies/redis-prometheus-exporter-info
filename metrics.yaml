@@ -457,3 +457,96 @@ stats_tracking_total_prefixes:
 stats_unexpected_error_replies:
   help: Number of unexpected error replies, that are types of errors from an AOF load or replication
   type: counter
+index_doc_count:
+  help: The number of documents
+  type: gauge
+index_term_count:
+  help: The number of distinct terms
+  type: gauge
+index_record_count:
+  help: The number of records
+  type: gauge
+index_use_count:
+  help: The number of times the index has been used
+  type: gauge
+index_indexing:
+  help: Indicates whether the index is currently being generated
+  type: gauge
+index_cleaning:
+  help: The index deletion flag. A value of 1 indicates index deletion is in progress.
+  type: gauge
+index_doc_table_size_mb:
+  help: The memory used by the document table, which contains metadata about each document in the index
+  type: gauge
+index_sortable_values_size_mb:
+  help: The memory used by sortable values, which are values associated with documents and used for sorting purposes
+  type: gauge
+index_key_table_size_mb:
+  help: The memory used by the key table, which stores the mapping between document IDs and Redis keys
+  type: gauge
+index_offset_vectors_size_mb:
+  help: The memory used by the offset vectors, which store positional information for terms in documents
+  type: gauge
+index_tag_overhead_size_mb:
+  help: (PROVISIONAL) The memory used by the tag overhead
+  type: gauge
+index_text_overhead_size_mb:
+  help: (PROVISIONAL) The memory used by text overhead
+  type: gauge
+index_percent_indexed:
+  help: The percentage of the index that has been successfully generated (1 means 100%)
+  type: gauge
+index_cursor_global_idle_count:
+  help: The number of idle cursors in the system
+  type: gauge
+index_cursor_global_count:
+  help: The total number of cursors in the system
+  type: gauge
+index_cursor_index_count:
+  help: The total number of cursors open on the index
+  type: gauge
+index_cursor_index_capacity_count:
+  help: The maximum number of cursors allowed per index
+  type: gauge
+index_geo_shapes_size_mb:
+  help: The memory used by GEO-related fields
+  type: gauge
+index_hash_indexing_failures_count:
+  help: The number of failures encountered during indexing
+  type: gauge
+index_vector_index_size_mb:
+  help: The memory used by the vector index, which stores any vectors associated with each document
+  type: gauge
+index_indexing_time_seconds:
+  help: The total time taken for indexing in seconds
+  type: gauge
+index_gc_collected_bytes:
+  help: The number of bytes collected during garbage collection
+  type: gauge
+index_gc_run_ms:
+  help: The total time in milliseconds spent on garbage collection
+  type: gauge
+index_gc_cycles_count:
+  help: The total number of garbage collection cycles
+  type: gauge
+index_gc_last_run_time_ms:
+  help: The time in milliseconds taken by the last garbage collection run
+  type: gauge
+index_gc_numeric_trees_missed_count:
+  help: The number of numeric tree nodes whose changes were discarded due to splitting by the parent process during garbage collection
+  type: gauge
+index_gc_blocks_denied_count:
+  help: The number of blocks whose changes were discarded (skipped) because they were modified by the parent process during the garbage collection. Notably, as inverted index blocks are append-only, only the last block of an inverted index can be skipped.
+  type: gauge
+index_inverted_index_block_count:
+  help: The total number of blocks in the inverted index
+  type: gauge
+index_inverted_size_mb:
+  help: The memory used by the inverted index, which is the core data structure used for searching in RediSearch. The size is given in megabytes.
+  type: gauge
+index_memory_size_mb:
+  help: (PROVISIONAL) The total memory used by the index, which is the sum of all the memory used by the index components.
+  type: gauge
+index_indexing_error_count:
+  help: (PROVISIONAL) The number of errors encountered during indexing
+  type: gauge
